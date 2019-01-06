@@ -3,15 +3,14 @@ const exec = require('child_process').exec
 const cors = require('cors')
 const multer = require('multer')
 
-const uploadHandler = multer()
+var upload = multer({ dest: 'uploads/' })
 
 const app = express()
 const PORT = process.env.PORT || 1234
 
 app.use(cors())
 
-app.post('/building', uploadHandler.fields([]), (req, res) => {
-  console.log('reqbody', req.body)
+app.post('/building', upload.single('image'), (req, res) => {
   console.log('🙋‍  Handling `GET /building`')
 
   console.log('🚀  Executing label_image.py')
@@ -20,7 +19,7 @@ app.post('/building', uploadHandler.fields([]), (req, res) => {
       --graph=/tmp/output_graph.pb --labels=/tmp/output_labels.txt \
       --input_layer=Placeholder \
       --output_layer=final_result \
-      --image=./src/intelligence/training_data/istv-2/istv-2-back.jpg`,
+      --image=./uploads/${req.file.filename}`,
     (error, stdout, stderr) => {
       console.log('🎬  Finished label_image.py execution')
       console.log(`✅  Result:\n${stdout}`)

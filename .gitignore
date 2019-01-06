@@ -78,3 +78,9 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+# tmp files
+uploads/
+
+# Mac OS specific
+.DS_Store
