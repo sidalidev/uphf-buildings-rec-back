@@ -1,0 +1,1 @@
+python3 retrain.py --image_dir ~/flower_photos
