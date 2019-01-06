@@ -1,8 +1,11 @@
 const express = require('express')
 const exec = require('child_process').exec
+const cors = require('cors')
 
 const app = express()
 const PORT = process.env.PORT || 1234
+
+app.use(cors())
 
 app.get('/building', (req, res) => {
   console.log('🙋‍  Handling `GET /building`')
