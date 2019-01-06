@@ -1,0 +1,1 @@
+python3 ./src/intelligence/retrain.py --image_dir ./src/intelligence/training_data
