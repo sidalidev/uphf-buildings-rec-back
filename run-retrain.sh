@@ -1,1 +1,1 @@
-python3 retrain.py --image_dir ~/flower_photos
+python3 retrain.py --image_dir ~/building-photos
