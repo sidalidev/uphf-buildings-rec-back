@@ -1,13 +1,17 @@
 const express = require('express')
 const exec = require('child_process').exec
 const cors = require('cors')
+const multer = require('multer')
+
+const uploadHandler = multer()
 
 const app = express()
 const PORT = process.env.PORT || 1234
 
 app.use(cors())
 
-app.get('/building', (req, res) => {
+app.post('/building', uploadHandler.fields([]), (req, res) => {
+  console.log('reqbody', req.body)
   console.log('🙋‍  Handling `GET /building`')
 
   console.log('🚀  Executing label_image.py')
