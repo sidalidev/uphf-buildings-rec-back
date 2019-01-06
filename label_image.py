@@ -7,6 +7,10 @@ import argparse
 import numpy as np
 import tensorflow as tf
 
+# Just disables the warning, doesn't enable AVX/FMA
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+
 
 def load_graph(model_file):
     graph = tf.Graph()
